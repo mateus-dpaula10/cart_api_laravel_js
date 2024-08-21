@@ -1,0 +1,76 @@
+.loader {
+    display: block;
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#produtos {
+    display: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .produto {
+        width: calc(25% - .75rem);
+        box-shadow: 0 0 4px 2px #00000020;
+        border-radius: .375rem;
+        display: flex;
+        flex-direction: column;
+        
+        > div {
+            &:nth-of-type(1) {
+                height: 5rem;
+                position: relative;
+
+                .capa {
+                    position: absolute;
+                    border-radius: .375rem .375rem 0 0;
+                    inset: 0;
+                    background-size: cover;
+                    background-position: right top;
+                }
+            }
+
+            &:nth-of-type(2) {
+                position: relative;
+                padding: 1.5rem 2rem;
+    
+                i {
+                    position: absolute;
+                    top: .5rem;
+                    right: .5rem;
+                    cursor: pointer;
+                    transition: all .35s ease-in;
+        
+                    &:hover {
+                        opacity: .85;
+                    }
+                }
+            }
+        }
+
+        > button {
+            border-radius: 0 0 .375rem .375rem;
+            font-size: 1.3rem;
+            cursor: initial;
+        }
+        
+        @media (max-width: 800px) {
+            width: calc(33.33% - .67rem);
+        }
+
+        @media (max-width: 600px) {
+            width: calc(50% - .5rem);
+        }
+    }
+}
