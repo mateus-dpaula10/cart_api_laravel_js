@@ -16,5 +16,9 @@ class Product extends Model
         'descricao',
     ];
 
+    public function carrinho() {
+        return $this->belongsTo(Cart::class);
+    }
+
     use HasFactory;
 }

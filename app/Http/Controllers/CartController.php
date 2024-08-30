@@ -7,36 +7,31 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view ('cart.index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
-        //
+        $itemCarrinho = Cart::create($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Sucesso: Produto adicionado ao carrinho!',
+            'item_carrinho' => $itemCarrinho
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cart $cart)
+    public function verificaProduto($id, $user) {
+        $produto = Cart::where('product_id', $id)->where('user_id', $user)->get();
+        return response()->json($produto);
+    }
+    
+    public function show($id)
     {
-        //
+        $produtos = Cart::where('user_id', $id)->get();
+        return response()->json($produtos);
     }
 
     /**

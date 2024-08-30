@@ -20,6 +20,10 @@ Route::get('/', function () {
     return redirect ('produto');
 });
 
-Route::resource('pagina-inicial', HomeController::class);
-Route::resource('produto', ProductController::class);
-Route::resource('carrinho', CartController::class);
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::resource('pagina-inicial', HomeController::class);
+    Route::resource('produto', ProductController::class);
+    Route::resource('carrinho', CartController::class);
+});

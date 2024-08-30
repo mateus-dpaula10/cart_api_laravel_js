@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     @stack('styles')
 </head>
 
@@ -31,7 +32,11 @@
                             <a class="nav-link {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('carrinho.index') ? 'active' : '' }}" href="{{ route('carrinho.index') }}">Carrinho</a>
+                            <a title="Página de meu carrinho" class="nav-link {{ request()->routeIs('carrinho.index') ? 'active' : '' }}" href="{{ route('carrinho.index') }}">
+                                {{-- Carrinho --}}
+                                <i class="fas fa-cart-shopping"></i>                
+                                <small data-icon-count></small>   
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -40,6 +45,8 @@
     </header>
 
     <main class="shadow-sm">
+        <input type="hidden" id="user_id" value="{{ Auth::user()->id }}">
+
         <div class="container">
             <div class="row">
                 <div class="col-12 py-5">
@@ -65,6 +72,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/getProdutos.js') }}"></script>
+    <script src="{{ asset('js/addProdutoCarrinho.js') }}"></script>
+    <script src="{{ asset('js/atualizaQtdCarrinho.js') }}"></script>
 </body>
 
 </html>
