@@ -25,11 +25,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('pagina-inicial.index') ? 'active' : '' }}" aria-current="page" href="{{ route('pagina-inicial.index') }}">Página Inicial</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">Produtos</a>
+                            <a title="Página de produtos" class="nav-link {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">Produtos</a>
                         </li>
                         <li class="nav-item">
                             <a title="Página de meu carrinho" class="nav-link {{ request()->routeIs('carrinho.index') ? 'active' : '' }}" href="{{ route('carrinho.index') }}">
@@ -74,6 +74,7 @@
     <script src="{{ asset('js/getProdutos.js') }}"></script>
     <script src="{{ asset('js/addProdutoCarrinho.js') }}"></script>
     <script src="{{ asset('js/atualizaQtdCarrinho.js') }}"></script>
+    <script src="{{ asset('js/removeProdutoCarrinho.js') }}"></script>
 </body>
 
 </html>
